@@ -45,17 +45,17 @@ print(paste('mean = ', mean(my1000$kkardashtemp),' sd = ',sd(my1000$kkardashtemp
 ```{r}
 numb=2
 Hdata = Homers_data[sample(1:1000, size=numb*1000, replace=T),"kkardashtemp"]
-mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+mdata <-matrix(Hdata,nrow=1000,ncol=numb)
 x.avg <- apply(mdata,1,mean)
 my1000$k2 = x.avg
 
-p <- ggplot(my1000, aes(x=k2)) + 
-  geom_density() 
+p <- ggplot(my1000, aes(x=k2)) +
+geom_density()
 p
 
 # Add mean line
-  geom_vline(aes(xintercept=mean(k2)),
-            color="blue", linetype="dashed", size=1)
+geom_vline(aes(xintercept=mean(k2)),
+color="blue", linetype="dashed", size=1)
 print(paste('mean = ', mean(my1000$k2),' sd = ',sd(my1000$k2)))
 
 ```
@@ -66,24 +66,104 @@ print(paste('mean = ', mean(my1000$k2),' sd = ',sd(my1000$k2)))
 ```{r}
 numb = 4
 Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
-mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+mdata <-matrix(Hdata,nrow=1000,ncol=numb)
 x.avg <- apply(mdata,1,mean)
 my1000$k4 = x.avg
 
 
-p <- ggplot(my1000, aes(x=k4),col=sex) + 
-  geom_density() +
+p <- ggplot(my1000, aes(x=k4),col=sex) +
+geom_density() +
 
 # Add mean line
- geom_vline(aes(xintercept=mean(k4)),
-            color="blue", linetype="dashed", size=1)
+geom_vline(aes(xintercept=mean(k4)),
+color="blue", linetype="dashed", size=1)
 p + ggtitle("n = 4") +
-  xlab("temperature") + ylab(" density")
+xlab("temperature") + ylab(" density")
 
 print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
 
 ```
 
-### In this case the stdev was cut in half because the sample size was four. This is what the central limit theorem says. There are also 5 peaks. They go from FFFF,to FFFM, to FFMM to FMMM and finally MMMM.
+```{r}
+numb=9
+Hdata = Homers_data[sample(1:1000, size=numb*1000, replace=T),"kkardashtemp"]
+mdata <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k9 = x.avg
 
-# Now finish by adding blocks with numb being 9, then 16, 25, and 36. be sure to mention how the standard deviation progresses as the sample size changes,
+p <- ggplot(my1000, aes(x=k9), (Col=sex))+
+geom_density()
+
+# Add mean line
+geom_vline(aes(xintercept=mean(k9)),
+color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 9") +
+xlab("temperature") + ylab("desnity")
+
+print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
+
+```
+According to the Central limit theorem, the mean gets closer to 50. On line(103) the standard deviation is close to about 14 making it look more symmetrical. line(42)'s standard deviation divided by the square root of 9 is close to about 14, line(103)'s standard deviation.
+
+
+```{r}
+numb=16
+Hdata = Homers_data[sample(1:1000, size=numb*1000, replace=T),"kkardashtemp"]
+mdata <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k16= x.avg
+
+p <- ggplot(my1000, aes(x=k16), (Col=sex))+
+geom_density()
+
+# Add mean line
+geom_vline(aes(xintercept=mean(k16)),
+color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 16") +
+xlab("temperature") + ylab("desnity")
+
+print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
+
+```
+
+```{r}
+numb=25
+Hdata = Homers_data[sample(1:1000, size=numb*1000, replace=T),"kkardashtemp"]
+mdata <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k25= x.avg
+
+p <- ggplot(my1000, aes(x=k25), (Col=sex))+
+geom_density()
+
+# Add mean line
+geom_vline(aes(xintercept=mean(k25)),
+color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 25") +
+xlab("temperature") + ylab("desnity")
+
+print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
+
+```
+
+
+
+```{r}
+numb=36
+Hdata = Homers_data[sample(1:1000, size=numb*1000, replace=T),"kkardashtemp"]
+mdata <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k36= x.avg
+
+p <- ggplot(my1000, aes(x=k36), (Col=sex))+
+geom_density()
+
+# Add mean line
+geom_vline(aes(xintercept=mean(k36)),
+color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 36") +
+xlab("temperature") + ylab("desnity")
+
+print(paste('mean = ', mean(my1000$k36),' sd = ',sd(my1000$k36)))
+
+```
